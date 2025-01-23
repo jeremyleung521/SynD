@@ -6,6 +6,11 @@ from numpy.typing import ArrayLike
 from typing import Callable, Union
 from scipy import sparse
 
+try:
+    from packaging.version import parse
+except ModuleNotFoundError:
+    from pkg_resources import parse_version as parse
+
 
 class MarkovGenerator(DiscreteGenerator):
     """
@@ -36,7 +41,7 @@ class MarkovGenerator(DiscreteGenerator):
 
         self.rng = np.random.default_rng(seed=seed)
 
-        self.numpy_version_greater = Version(np.__version__) >= Version('1.25.0')
+        self.numpy_version_greater = parse(np.__version__) >= parse('1.25.0')
 
         self.cumulative_probabilities = np.cumsum(self.transition_matrix, axis=1)
 
