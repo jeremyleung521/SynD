@@ -1,5 +1,6 @@
 from __future__ import annotations  # Sets PEP563, necessary for autodoc type aliases
 from synd.models.discrete.discrete import DiscreteGenerator
+from packaging.version import Version
 import numpy as np
 from numpy.typing import ArrayLike
 from typing import Callable, Union
@@ -35,7 +36,7 @@ class MarkovGenerator(DiscreteGenerator):
 
         self.rng = np.random.default_rng(seed=seed)
 
-        self.numpy_version_greater = Version(numpy.__version__) >= Version('1.25.0')
+        self.numpy_version_greater = Version(np.__version__) >= Version('1.25.0')
 
         self.cumulative_probabilities = np.cumsum(self.transition_matrix, axis=1)
 
