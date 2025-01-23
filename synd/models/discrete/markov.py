@@ -1,6 +1,5 @@
 from __future__ import annotations  # Sets PEP563, necessary for autodoc type aliases
 from synd.models.discrete.discrete import DiscreteGenerator
-from packaging.version import Version
 import numpy as np
 from numpy.typing import ArrayLike
 from typing import Callable, Union
